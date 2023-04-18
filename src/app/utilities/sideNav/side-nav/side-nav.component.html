@@ -1,0 +1,201 @@
+<!-- <nav class="sb-sidenav accordion sb-sidenav-light bg-white shadow-sm" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <h4 class="TeacherTitle">Teachers Dashboard</h4>
+                <a class="nav-link navStyle mt-2"  routerLinkActive="active" >
+                    <i class='bx bx-home-circle bxStyle'></i>
+                    <span class="TitleSetheader">Dashboard</span>
+                </a>
+                <a class="nav-link navStyle " routerLink="/teacher/profile"  routerLinkActive="active" >
+                    <i class='bx bxs-school bxStyle'></i>
+                    <span class="TitleSetheader"> School Profile</span>
+                </a>
+              
+                <a class="dropdown GkDropbx">
+                    <a class="nav-link navStyle dropdown-toggle"   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class='bx bxl-dropbox bxStyle'></i>
+                        <span class="TitleSetheader">Profile</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="nav-link navStyle" routerLinkActive="active"routerLink="/teacher/teacherHome">
+                            <i class='bx bxs-inbox bxStyle'></i>
+                            <span class="TitleSetheader">New</span>
+                        </a>
+        
+                        <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teacherOutbox">
+                            <i class='bx bx-archive-out bxStyle' ></i>
+                            <span class="TitleSetheader">Copy From Dropbox</span>
+                        </a>
+
+                        <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teachersDetail">
+                            <i class='bx bx-archive-out bxStyle' ></i>
+                            <span class="TitleSetheader">View / Edit</span>
+                        </a>
+
+                        <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teachersDetail">
+                            <i class='bx bx-archive-out bxStyle' ></i>
+                            <span class="TitleSetheader">Detailed Profile</span>
+                        </a>
+
+                        <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/updateEmailMobile">
+                            <i class='bx bx-archive-out bxStyle' ></i>
+                            <span class="TitleSetheader">Update Email & Mobile</span>
+                        </a>
+                    </div>
+                </a>
+                <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/customForm">
+                    <i class='bx bx-question-mark bxStyle'></i>
+                    <span class="TitleSetheader">State Specific Question</span>
+                </a>
+                <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teachersDetail">
+                    <i class='bx bx-user-pin bxStyle'></i>
+                    <span class="TitleSetheader">Teachers Detail</span>
+                </a>
+             
+                <span class="dropdown GkDropbx">
+                    <a class="nav-link navStyle dropdown-toggle"   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class='bx bxl-dropbox bxStyle'></i>
+                        <span class="TitleSetheader">DropBox</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teacherInbox">
+                            <i class='bx bxs-inbox bxStyle'></i>
+                            <span class="TitleSetheader">Inbox</span>
+                        </a>
+        
+                        <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teacherOutbox">
+                            <i class='bx bx-archive-out bxStyle' ></i>
+                            <span class="TitleSetheader">Outbpx</span>
+                        </a>
+                    </div>
+                </span>
+
+            </div>              
+        </div>
+    </nav> -->
+
+<nav
+    class="sidebar sb-sidenav accordion sb-sidenav-light bg-white shadow-sm" style="position:relative" id="sidenavAccordion">
+
+    <a id="sidebarToggle" class="sidebarToggle" style="text-align: right;position: absolute;text-align: right;right: -30px !important;">
+        <i class='bx bx-chevrons-left'></i>
+    </a>
+    <!-- <nav class="sidebar card py-2 mb-4"> -->
+    <ul class="nav flex-column" id="nav_accordion">
+
+        <div class="avatar-upload">
+            <div class="avatar-edit">
+                <input type='file' (change)="handleFileInput($event.target.files, '0')" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                <label for="imageUpload"></label>
+            </div>
+            <div class="avatar-preview">
+                <!-- <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                </div> -->
+                <img id="abc"  src="{{imageData}}" style="width:75px;height: 75px; border-radius: 60%;" />
+            </div>
+        </div>
+        <h4 class="TeacherTitle">{{teacherId}} | {{firstName}}</h4>
+
+        <!-- <li class="nav-item">
+            <a class="nav-link navStyle mt-2" routerLinkActive="active">
+                <i class='bx bx-home-circle bxStyle'></i>
+                <span class="TitleSetheader">Dashboard</span>
+            </a>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link navStyle" routerLink="/teacher/profile"  routerLinkActive="active">
+                <i class='bx bx-user bxStyle'></i>
+                <span class="TitleSetheader">
+                     Teacher Profile</span>
+            </a>
+           
+        </li>
+
+        <!-- <li class="nav-item">
+            <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/kvsteacherprofile">
+                <i class='bx bx-user bxStyle'></i>
+                <span class="TitleSetheader">Kvs Teacher Profile</span>
+            </a>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/kvsteachertransfer" >
+                <i class='bx bx-transfer-alt bxStyle' ></i>
+                <span class="TitleSetheader"> Teacher Transfer </span>
+            </a>
+        </li>
+
+        <!-- <li class="nav-item">
+            <a class="nav-link navStyle" routerLinkActive="active"  >
+                <i class='bx bxl-digitalocean bxStyle'></i>
+                <span class="TitleSetheader"> Digital Content </span>
+            </a>
+        </li> -->
+        <!-- <li class="nav-item">
+            <a class="nav-link navStyle" routerLinkActive="active"  >
+                <i class='bx bxs-school bxStyle' ></i>
+                <span class="TitleSetheader"> Joining in School </span>
+            </a>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/changePassword" >
+                <i class='bx bxs-key bxStyle' ></i>
+                <span class="TitleSetheader"> Change Password </span>
+            </a>
+        </li>
+<!-- 
+        <li class="nav-item has-submenu">
+            <a class="nav-link navStyle">
+                <i class='bx bxl-dropbox bxStyle'></i>
+                <span class="TitleSetheader">Profile</span>
+                <i class='bx bx-chevron-down bxStyle dropIcon'></i>
+            </a>
+            <ul class="submenu collapse">
+                <li>
+                    <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teacherHome">
+                        <i class='bx bxs-inbox bxStyle'></i>
+                        <span class="TitleSetheader">New</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teacherOutbox">
+                        <i class='bx bx-archive-out bxStyle'></i>
+                        <span class="TitleSetheader">Copy From Dropbox</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teachersDetail">
+                        <i class='bx bx-archive-out bxStyle'></i>
+                        <span class="TitleSetheader">View / Edit</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teachersDetail">
+                        <i class='bx bx-archive-out bxStyle'></i>
+                        <span class="TitleSetheader">Detailed Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/updateEmailMobile">
+                        <i class='bx bx-archive-out bxStyle'></i>
+                        <span class="TitleSetheader">Update Email & Mobile</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li> -->
+
+        <!-- <li class="nav-item">
+            <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/customForm">
+                <i class='bx bx-question-mark bxStyle'></i>
+                <span class="TitleSetheader">State Specific Question</span>
+            </a>
+        </li> -->
+        <!-- <li class="nav-item">
+            <a class="nav-link navStyle" routerLinkActive="active" routerLink="/teacher/teachersDetail">
+                <i class='bx bx-user-pin bxStyle'></i>
+                <span class="TitleSetheader">Teachers Detail</span>
+            </a>
+        </li> -->
+        
+    </ul>
+</nav>

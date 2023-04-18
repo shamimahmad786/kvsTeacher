@@ -1,0 +1,200 @@
+#layoutSidenav #layoutSidenav_content{ padding:0px ! important;}
+
+.profile-greeting {
+     /* background-image: url(..//..//..//assets/assets/img/bg-green.jpg);
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative; */
+    background-color: #25695c;
+    padding:35px;
+}
+.progileList{position: relative; margin-top: 5px;}
+.progileList ul {padding:0px; margin:0px; box-sizing: border-box;}
+.progileList ul li{display: inline-table; padding: 0px 32px;}
+.progileList ul li:first-child{display: inline-table; padding-left: 0px;}
+.progileList ul li .UserImageSet{ width: 146px;  height: 146px; margin-top: -90px;  margin-right: 78px;
+    position: absolute; border-radius: 100%; ; border:3px solid #ffffff; background-color: white; }
+  ul li.w120{width:152px;}
+  .bdrRight{border-right:1px solid silver;}
+  .UserImageSet img{width: 100%; height:100%; overflow: hidden; z-index:1; padding:2px; border-radius: 100%;}
+  /* .progileList ul li:nth-child(2), */
+  .progileList ul li:nth-child(3),
+  .progileList ul li:nth-child(4),
+  .progileList ul li:nth-child(5)
+  { position: relative; top:15px;}
+  .progileList ul li:nth-child(2)
+  { position: relative; top:10px;}
+ 
+  .TittleSet{ font-size:16px; font-weight: 600;}
+  .nav-pills .nav-link{
+    
+    border-radius: 0.8rem ! important;
+}
+  .nav-link {
+    display: block;
+    padding: 0.29rem 1rem ! important;
+  }
+  ul.inlineUl{padding:0px; margin:0px; box-sizing: border-box;}
+  ul.inlineUl li{display: inline-table;}
+  .UserName{ font-size:15px; font-weight: 600;}
+  img.Imghr {    width: 77px ! important;    height: 77px ! important;    border: 1px solid #25695c70;
+    border-radius: 100%;
+}
+.pText{ color: #6c6c6c;  font-weight: 500;  font-size: 16px;}
+.SchoolDetails {
+  margin-left: 185px;
+  margin-top: 30px;
+}
+.shadow-custom{ border: 1px solid #ededed;}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #25695c;
+}
+.nav-pills .nav-link {
+    background:#dddddd;
+    border: 0;
+    color: #222222;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    letter-spacing: 0.6px;
+    border-radius: 0.25rem;
+}
+li.nav-item {
+  margin-right: 10px;
+}
+.Wishes{
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.feature{ position:relative;}
+.feature h4.Wishes::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: #25695c;
+}
+
+
+
+/* timeline css */
+
+.timeline {  
+ 
+  width: 100%;  
+  padding: 5px;  
+  display: grid;  
+  grid-template-columns: 1fr 3px 1fr;  
+  font-family: "Fira Sans", sans-serif;  
+  color: #777777;  
+ }  
+ .timeline__component {  
+  margin: 0 20px 20px 20px;  
+ }  
+ .timeline__component--bg {  
+  padding: 1em;  
+  background: rgba(255, 255, 255, 0.2);  
+  box-shadow: 0 0 3px #25695c;  
+  border-radius: 10px;  
+ }  
+ /* LEAVE TILL LAST */  
+ .timeline__component--bottom {  
+  margin-bottom: 0;  
+ }  
+ .timeline__middle {  
+  position: relative;  
+  background: #d6d6d6;  
+ }  
+ .timeline__point {  
+  position: absolute;  
+  top: 0;  
+  left: 50%;  
+  transform: translateX(-50%);  
+  width: 15px;  
+  height: 15px;  
+  background: #25695c;  
+  border-radius: 50%;  
+ }  
+ /* LEAVE TILL LAST */  
+ .timeline__point--bottom {  
+  top: initial;  
+  bottom: 0;  
+ }  
+ .timeline__date--right {  
+  text-align: right;  
+  color: #106fb4;  
+ }  
+ .timeline__title {  
+  margin: 0;  
+  line-height: 20px;
+  margin-bottom: 8px;
+  font-size: 1.15em;  
+  font-weight: bold;  
+  color: rgb(15, 15, 15);  
+ }  
+ .timeline__paragraph {  
+  line-height: 1.2; margin-bottom: 0px;  
+ }  
+ .timeline__date {  
+  color: #25695c;
+    font-size: 15px;
+    font-weight: 800;
+ } 
+ ul.inlineUl li {
+  display: inline-table;
+  border: 1px solid #cdcdcd;
+  padding: 5px 5px 0px 5px;
+  margin-right: 15px;
+} 
+ li a i {
+  color: #666666;
+  font-size: 17px;
+}
+li:hover a i {
+  color: #25695c;
+  font-size: 17px;
+}
+ .titol {  
+  font-style: italic;  
+ }  
+
+ .CarrierTimeLine{ height: 300px; overflow-y: scroll;}
+ .bold {
+  font-weight: 700;
+  color: black;
+}
+.text-value{ font-weight: 700;
+  color: #25695c;}
+ li.pText {
+  display: inline;
+}
+  /* scroller css */
+
+  #style-7::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+#style-7::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-7::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear,
+	left bottom,
+	left top,
+	color-stop(0.44, rgb(140, 143, 142)),
+	color-stop(0.72, rgb(192, 196, 195)),
+	color-stop(0.86, rgb(160, 161, 161)));
+}

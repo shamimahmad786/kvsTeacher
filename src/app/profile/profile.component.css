@@ -1,0 +1,66 @@
+p{
+    padding: 10px;
+}
+.borderBottomStyle{ padding:5px 8px; font-size:15px; font-weight:400; letter-spacing: 1px; border-bottom:1px dotted #c7ffd9; margin-bottom:0px; font-family: 'roboto', sans-serif;}
+.Pheading{font-size:15px; font-weight:500; letter-spacing: 1px; font-family: 'roboto', sans-serif;color: #5eb278;}
+.page-header h3 {
+    font-size: 24px;
+    margin-bottom: 0;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+ ul.bookmark li{ list-style:none; float:right;
+     margin-left:15px; padding:8px; border: 1px solid #e6edef;
+    background-color: #fff;  display: inline-block;  border-radius: 8px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    }
+
+    .bg-primary {
+        background-color: #24695c !important;
+        color: #fff;
+    }
+
+    .bg-secondary {
+        background-color: #ba895d !important;
+        color: #fff;
+    }
+    .d-flex span {
+
+        font-weight: 500;
+    letter-spacing: 1px;
+    font-family: 'Montserrat',sans-serif;
+    }
+    .d-flex h4 {
+        font-weight: 600; font-size: 1.5rem; letter-spacing: 1px;
+        font-family: 'Montserrat',sans-serif;
+    }
+    .flex-grow-1 svg {
+        position: absolute;
+        right: -14px;
+        top: 6px;
+        opacity: 0.2;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        width: 100px;
+        height: 100px;
+    }
+    svg {
+        vertical-align: baseline;
+    }
+    .d-flex .flex-grow-1 {
+        -ms-flex-item-align: center !important;
+        align-self: center !important;
+        padding-left:6px;
+    }
+
+    .flex-grow-1:hover svg {
+        -webkit-transform: rotate(    -5deg) scale(1.1);
+        transform: rotate(    -5deg) scale(1.1);
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+    .b-r-4 {
+        border-radius: 4px !important;
+    }
+    .card-body{ padding:30px;}

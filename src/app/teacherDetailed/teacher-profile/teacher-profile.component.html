@@ -1,0 +1,2012 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="shadow-sm bg-white mb-4">
+                <div class="p-4 text-center">
+                    <p class="px-4 pt-2  font16 ff">User</p>
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                            <label for="imageUpload"></label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview" style="background-image:url(assets/assets/img/s.jpg);"></div>
+                        </div>
+                    </div>
+                    <h2 class="mb-0">{{responseData.teacherName}}</h2>
+                </div>
+            </div>
+
+            <div class="shadow-sm bg-white">
+                <h2 class="mb-0 bg-light-green p-2">Transfer Report & Status</h2>
+                <div class="p-4 ">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <h4 class="titleSet">Transfer Date</h4>
+                            <input type="date" class="form-control ">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <h4 class="titleSet">Transfer Location</h4>
+                            <input type="date" class="form-control ">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <h4 class="titleSet">Transfer Status</h4>
+                            <!-- <div class="btn-group">
+                                <a href="#" class="btn btn-info active" aria-current="page">Active</a>
+                                <a href="#" class="btn btn-info">Progress</a>
+                                <a href="#" class="btn btn-info">No Process</a>
+                              </div> -->
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                                    checked>
+                                <label class="btn btn-outline-success" for="btnradio1">Active</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <label class="btn btn-outline-success" for="btnradio2">Progress</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                <label class="btn btn-outline-danger" for="btnradio3">No Process</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="shadow-sm bg-white " style="min-height: 225px;">
+                <div class="p-3">
+                    <div class="card px-0 pb-0 ">
+                        <h2 class="mb-0">Teacher Profile</h2>
+                        <!-- <p class="font16 ff">Bitcoin / Ethereum Exchange Dashboard designed by Nick Tarasov. Connect
+                            with them on Dribbble; the global community for designers and creative professionals.</p> -->
+                        <form id="msform">
+                            <ul id="progressbar" class="m-0 p-0">
+                                <li class="active" id="profile">
+                                    <strong>Profile</strong>
+                                </li>
+                                <li id="disability">
+                                    <strong>Disability</strong>
+                                </li>
+                                <li id="information">
+                                    <strong>Information</strong>
+                                </li>
+                                <li id="qualification">
+                                    <strong>Qualification</strong>
+                                </li>
+                                <li id="training">
+                                    <strong>Training</strong>
+                                </li>
+                                <li id="experience">
+                                    <strong>Experience</strong>
+                                </li>
+                                <li id="upload">
+                                    <strong>Upload Document</strong>
+                                </li>
+                            </ul>
+                            <div class="progress mt-2">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shadow-sm bg-white mt-4">
+                <div class="px-3">
+                    <div class="py-2">
+                        <form id="msform" [formGroup]="teacherForm" (ngSubmit)="onSubmit($event)">
+                            <div class="fieldSet bg-white" formGroupName="profileForm">
+                                <fieldset>
+                                    <div class="form-card">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h2 class="mb-0">Basic Profile</h2>
+                                            </div>
+                                            <div class="col-5">
+                                                <h2 class="steps">Step 1 - 7</h2>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 ">
+                                                <div class="row">
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet"> Employee Code</h4>
+                                                        <input type="text" class="form-control" name="empCode"
+                                                            formControlName="empCode"
+                                                            [(ngModel)]="responseData.teacherEmployeeCode">
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Full Name
+                                                        </h4>
+                                                        <input type="text" class="form-control " name="fullName"
+                                                            formControlName="fullName"
+                                                            [(ngModel)]="responseData.teacherName">
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet"> Present Station Name(Code)</h4>
+                                                        <input type="text" class="form-control "
+                                                            name="presentStationName"
+                                                            formControlName="presentStationName" value="stationCode"
+                                                            [(ngModel)]="stationNameCode">
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Present Station in Present Post Date</h4>
+                                                        <input type="date" class="form-control"
+                                                            name="presentStationPostDate"
+                                                            formControlName="presentStationPostDate"
+                                                            [(ngModel)]="responseData.workExperiencePositionTypePresentStationStartDate">
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Gender</h4>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                id="inlineRadio1" value="1"
+                                                                [(ngModel)]="responseData.teacherGender" name="gender"
+                                                                formControlName="gender">
+                                                            <label class="form-check-label font16 ff"
+                                                                for="inlineRadio1">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                id="inlineRadio2" value="2"
+                                                                [(ngModel)]="responseData.teacherGender" name="gender"
+                                                                formControlName="gender">
+                                                            <label class="form-check-label font16 ff"
+                                                                for="inlineRadio2">Female</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                id="inlineRadio3" value="3"
+                                                                [(ngModel)]="responseData.teacherGender" name="gender"
+                                                                formControlName="gender">
+                                                            <label class="form-check-label font16 ff"
+                                                                for="inlineRadio3">Others</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Date of birth</h4>
+                                                        <input type="date" class="form-control " name="dob"
+                                                            formControlName="dob" [(ngModel)]="responseData.teacherDob">
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet"> Present KV Name(Code)</h4>
+                                                        <input type="text" class="form-control " name="presentKvName"
+                                                            formControlName="presentKvName" value="kvCode"
+                                                            [(ngModel)]="kvNameCode">
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet"> Present KV in Present Post Date</h4>
+                                                        <input type="date" class="form-control" name="presentKvDate"
+                                                            formControlName="presentKvDate"
+                                                            [(ngModel)]="responseData.workExperienceWorkStartDatePresentKv">
+                                                    </div>
+
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Social Category:</h4>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="socialCat" formControlName="socialCat"
+                                                            [(ngModel)]="responseData.teacherSocialCategory">
+                                                            <option selected>Select</option>
+                                                            <option *ngFor="let data of formDataList.socialCat"
+                                                                value="{{data.catId}}">{{data.cat}}</option>
+                                                            <!-- <option value="1">General</option>
+                                                            <option value="2">OBC</option>
+                                                            <option value="3">SC</option> -->
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Religion</h4>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="religion" formControlName="religion"
+                                                            [(ngModel)]="responseData.teacherReligion">
+                                                            <option selected>Select</option>
+                                                            <option *ngFor="let data of formDataList.religiousCat"
+                                                                value="{{data.catId}}">{{data.cat}}</option>
+                                                            <!-- <option value="2">Christian</option>
+                                                            <option value="3">Jain</option> -->
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Present Post Name(Code)</h4>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="presentPostName" formControlName="presentPostName"
+                                                            (change)="teacherTypeSelect($event)"
+                                                            [(ngModel)]="responseData.lastPromotionPositionType">
+                                                            <option selected>Select Post</option>
+                                                            <option
+                                                                *ngFor="let data of teacherTypeDataNameCode; let i=index;"
+                                                                value="{{data.teacherTypeId}}">{{data.nameCode}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet"> Present Post Date</h4>
+                                                        <input type="date" class="form-control" name="presentPostDate"
+                                                            formControlName="presentPostDate"
+                                                            [(ngModel)]="responseData.lastPromotionPositionDate">
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Nationality</h4>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="nationality" formControlName="nationality"
+                                                            [(ngModel)]="responseData.teacherNationality">
+                                                            <option selected>Select</option>
+                                                            <option value="1">Indian</option>
+                                                            <option value="2">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Mobile</h4>
+                                                        <input type="text" class="form-control" name="mobile"
+                                                            formControlName="mobile"
+                                                            [(ngModel)]="responseData.teacherMobile">
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet"> Subject Name(Code)</h4>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="presentSubjectName"
+                                                            formControlName="presentSubjectName"
+                                                            [(ngModel)]="responseData.workExperienceAppointedForSubject">
+                                                            <option selected>Select Subject</option>
+                                                            <option
+                                                                *ngFor="let data of subjectListNameCode; let i=index;"
+                                                                value="{{data.subjectCode}}">{{data.subNameCode}}
+                                                            </option>
+
+                                                        </select>
+                                                    </div>
+                                                    <!-- <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet"> Training JN KVS </h4>
+                                                        <input type="text" class="form-control" name="tariningJnKvs"
+                                                            formControlName="tariningJnKvs">
+                                                    </div> -->
+
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <h4 class="titleSet">Email</h4>
+                                                        <input type="email" class="form-control" name="email"
+                                                            formControlName="email"
+                                                            [(ngModel)]="responseData.teacherEmail">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+                                </fieldset>
+                                <!-- <button style="background-color: #24695c; color: white;" type="button" class="btn mt-2 float-right" >
+                                    
+                                  </button> -->
+
+                                <input type="button" name="next" class="next action-button" value="Next" />
+                                <input type="submit" id="submit1" value="Save & Next" class="next action-button" />
+                                <!-- <input type="submit" id="submit12" value="Save Confirm" class=" action-button" /> -->
+
+                                <!-- <input type="button" class="action-button" value="Confirm"
+                                    (click)="verifyModal()" /> -->
+                            </div>
+                            <div class="fieldSet" formGroupName="disabilityForm">
+                                <fieldset>
+                                    <div class="form-card">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h2 class="mb-0">Any kind of disability:</h2>
+                                            </div>
+                                            <div class="col-5">
+                                                <h2 class="steps">Step 2 - 7</h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+                                                <h4 class="titleSet">Do you have any kind of disability ?</h4>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" value="1" name="disabilityYN"
+                                                        type="radio" formControlName="disabilityYN"
+                                                        [(ngModel)]="responseData.teacherDisabilityYn"
+                                                        (click)="onClickDisability('yes')">
+                                                    <label class="form-check-label font16 ff"
+                                                        for="inlineRadio1">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" value="0" name="disabilityYN"
+                                                        type="radio" formControlName="disabilityYN"
+                                                        [(ngModel)]="responseData.teacherDisabilityYn"
+                                                        (click)="onClickDisability('no')">
+                                                    <label class="form-check-label font16 ff"
+                                                        for="inlineRadio2">No</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="showDiv" *ngIf="isVisible">
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-md-4 mb-3">
+                                                            <h4 class="titleSet">
+                                                                <span class="text-green">A -</span>
+                                                                Type of disability :
+                                                            </h4>
+                                                            <select class="form-select"
+                                                                aria-label="Default select example"
+                                                                name="disabilityType" formControlName="disabilityType"
+                                                                [(ngModel)]="responseData.teacherDisabilityType">
+                                                                <option selected>Select</option>
+                                                                <option *ngFor="let data of formDataList.disability"
+                                                                    value="{{data.disabilityId}}">
+                                                                    {{data.disabilityType}}</option>
+                                                                <!-- <option value="1">Blindness</option>
+                                                                <option value="2">Hearing impairment</option>
+                                                                <option value="3">Locomotor disability</option> -->
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-md-4 mb-3">
+                                                            <h4 class="titleSet">
+                                                                <span class="text-green">B -</span>
+                                                                Is this from birth :
+                                                            </h4>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" value="1"
+                                                                    name="disabilityFromBirthYN" type="radio"
+                                                                    formControlName="disabilityFromBirthYN"
+                                                                    (click)="onClickDisability('yesBirth')"
+                                                                    [(ngModel)]="responseData.teacherDisabilityFromBirthYn">
+                                                                <label class="form-check-label font16 ff"
+                                                                    for="inlineRadio1">Yes</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" value="0"
+                                                                    name="disabilityFromBirthYN" type="radio"
+                                                                    formControlName="disabilityFromBirthYN"
+                                                                    (click)="onClickDisability('noBirth')"
+                                                                    [(ngModel)]="responseData.teacherDisabilityFromBirthYn">
+                                                                <label class="form-check-label font16 ff"
+                                                                    for="inlineRadio2">No</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4 mb-3" *ngIf="isVisibleBirth">
+                                                            <h4 class="titleSet">Please specify date</h4>
+                                                            <input type="date" class="form-control"
+                                                                name="disabilityDate" formControlName="disabilityDate"
+                                                                [(ngModel)]="responseData.teacherDisabilityDate">
+                                                        </div>
+
+                                                        <div class="col-md-4 mb-3">
+                                                            <h4 class="titleSet">
+                                                                <span class="text-green">C -</span>
+                                                                Percentage of disability
+                                                            </h4>
+                                                            <input type="text" class="form-control "
+                                                                name="disabilityPercentage"
+                                                                formControlName="disabilityPercentage"
+                                                                [(ngModel)]="responseData.teacherDisabilityPrcnt">
+                                                        </div>
+                                                        <div class="col-md-4 mb-3">
+                                                            <h4 class="titleSet">
+                                                                <span class="text-green">D -</span>
+                                                                Disability certificate issuing authority
+                                                            </h4>
+                                                            <input type="text" class="form-control "
+                                                                name="disabilityCertAuth"
+                                                                formControlName="disabilityCertAuth"
+                                                                [(ngModel)]="responseData.teacherDisabilityCertAuthority">
+                                                        </div>
+
+                                                        <div class="col-md-4 mb-3">
+                                                            <h4 class="titleSet">Certificate No. (if any)</h4>
+                                                            <input type="text" class="form-control "
+                                                                name="disabilityCertNo"
+                                                                formControlName="disabilityCertNo"
+                                                                [(ngModel)]="responseData.teacherDisabilityCertNumber">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <input type="button" name="next" class="next action-button" value="Next" />
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous" />
+                                <input type="submit" id="submit2" value="Save" class=" action-button" />
+
+                            </div>
+                            <div class="fieldSet" formGroupName="personalInfoForm">
+                                <fieldset>
+                                    <div class="form-card">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h2 class="mb-0">Personal Information:</h2>
+                                            </div>
+                                            <div class="col-5">
+                                                <h2 class="steps">Step 3 - 7</h2>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h4 class="titleSet">Blood Group</h4>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="bloodGroup" formControlName="bloodGroup"
+                                                    [(ngModel)]="responseData.teacherBloodGroup">
+                                                    <option selected>Select blood group
+                                                    </option>
+                                                    <option value="1">A+</option>
+                                                    <option value="2">A-</option>
+                                                    <option value="3">B+</option>
+                                                    <option value="4">B-</option>
+                                                    <option value="5">AB+</option>
+                                                    <option value="6">AB-</option>
+                                                    <option value="7">O+</option>
+                                                    <option value="8">O-</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr>
+
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h4 class="titleSet">
+                                                    Correspondence Address</h4>
+                                                <textarea class="form-control" rows="1" name="crspndncAddress"
+                                                    formControlName="crspndncAddress"
+                                                    [(ngModel)]="responseData.teacherCorrespondenceAddress"></textarea>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">State</h4>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="crspndncState" formControlName="crspndncState"
+                                                            [(ngModel)]="responseData.teacherCorrespondenceState"
+                                                            (change)="getDistrictListByStateId($event, 'C')">
+                                                            <option selected>Select State
+                                                            </option>
+                                                            <option *ngFor="let data of stateMasterList"
+                                                                value="{{data.state_id}}">{{data.state_name}}</option>
+                                                            <!-- <option value="1">Delhi</option>
+                                                            <option value="1">Punjab</option>
+                                                            <option value="2">UP</option> -->
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">District</h4>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="crspndncDistrict" formControlName="crspndncDistrict"
+                                                            [(ngModel)]="responseData.teacherCorrespondenceDistrict">
+                                                            <option selected>Select blood group
+                                                            </option>
+                                                            <option *ngFor="let data of districListByStateIdC"
+                                                                value="{{data.district_id}}">{{data.district_name}}
+                                                            </option>
+                                                            <!-- <option value="1">Delhi</option>
+                                                            <option value="1">Punjab</option>
+                                                            <option value="2">UP</option> -->
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">Pin Code</h4>
+                                                        <input class="form-control" name="crspndncPinCode" type="number"
+                                                            formControlName="crspndncPinCode"
+                                                            [(ngModel)]="responseData.teacherCorrespondencePin">
+                                                        <!-- <select class="form-select" aria-label="Default select example"
+                                                            name="crspndncPinCode" formControlName="crspndncPinCode"
+                                                            [(ngModel)]="responseData.teacherCorrespondencePin">
+                                                            <option selected>Select blood group
+                                                            </option>
+                                                            <option value="1">Delhi</option>
+                                                            <option value="1">Punjab</option>
+                                                            <option value="2">UP</option>
+                                                        </select> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h4 class="titleSet">
+                                                    Permanent Address
+                                                </h4>
+                                                <textarea class="form-control" rows="1" name="prmntAddress"
+                                                    formControlName="prmntAddress"
+                                                    [(ngModel)]="responseData.teacherPermanentAddress"></textarea>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">State</h4>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="prmntState" formControlName="prmntState"
+                                                            [(ngModel)]="responseData.teacherParmanentState"
+                                                            (change)="getDistrictListByStateId($event, 'P')">
+                                                            <option selected>Select
+                                                            </option>
+                                                            <option *ngFor="let data of stateMasterList"
+                                                                value="{{data.state_id}}">{{data.state_name}}</option>
+                                                            <!-- <option value="1">Punjab</option>
+                                                            <option value="2">UP</option> -->
+                                                        </select>
+                                                        <!-- <input type="text" class="form-control" name="prmntState"
+                                                            formControlName="prmntState"
+                                                            [(ngModel)]="responseData.teacherParmanentState"> -->
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">District</h4>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="prmntDistrict" formControlName="prmntDistrict"
+                                                            [(ngModel)]="responseData.teacherPermanentDistrict">
+                                                            <option selected>Select
+                                                            </option>
+                                                            <option *ngFor="let data of districListByStateIdP"
+                                                                value="{{data.district_id}}">{{data.district_name}}
+                                                            </option>
+                                                            <!-- <option value="1">Delhi</option>
+                                                            <option value="1">Punjab</option>
+                                                            <option value="2">UP</option> -->
+                                                        </select>
+                                                        <!-- <input type="text" class="form-control" name="prmntDistrict"
+                                                            formControlName="prmntDistrict"
+                                                            [(ngModel)]="responseData.teacherPermanentDistrict"> -->
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">Pin Code</h4>
+                                                        <input type="number" class="form-control" name="prmntPinCode"
+                                                            formControlName="prmntPinCode"
+                                                            [(ngModel)]="responseData.teacherPermanentPin">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h4 class="titleSet">
+                                                    Personal Identification Mark (On Body)</h4>
+                                                <textarea class="form-control" rows="1" name="personalIdNo"
+                                                    formControlName="personalIdNo"
+                                                    [(ngModel)]="responseData.teacherPersonnelIdentification"></textarea>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">Aadhar Number</h4>
+                                                        <input type="text" class="form-control" name="aadhaarNo"
+                                                            formControlName="aadhaarNo"
+                                                            [(ngModel)]="responseData.teacherAadhaarNumber">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">Pan Number</h4>
+                                                        <input type="text" class="form-control" name="panNo"
+                                                            formControlName="panNo"
+                                                            [(ngModel)]="responseData.teacherPanNumber">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">Passport Number</h4>
+                                                        <input type="number" class="form-control" name="passportNo"
+                                                            formControlName="passportNo"
+                                                            [(ngModel)]="responseData.teacherPassportNumber">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+
+
+                                    </div>
+                                </fieldset>
+                                <input type="button" name="next" class="next action-button" value="Next" />
+                                <input type="submit" id="submit3" value="Save & Next" class="next action-button" />
+                                <input type="submit" id="submit33" value="Confirm" class="action-button" />
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous" />
+                                
+
+                            </div>
+                            <div class="fieldSet">
+                                <fieldset>
+                                    <div class="form-card">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h2 class="mb-0"> Qualification:</h2>
+                                            </div>
+                                            <div class="col-5">
+                                                <h2 class="steps">Step 4 - 7</h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4 class="titleSet"> Academic Qualification:</h4>
+                                                <table class="table" formArrayName="acadProfQual">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Qualifications</th>
+                                                            <th>Major Subject</th>
+                                                            <th>Minor Subject</th>
+                                                            <th>Board / University</th>
+                                                            <th>School / College</th>
+                                                            <th>Years of Passing</th>
+                                                            <th>Total Marks</th>
+                                                            <th> Marks Obtained</th>
+                                                            <th>
+                                                                Action
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let quantity of acadProfQual().controls; let i=index"
+                                                            formGroupName="{{i}}">
+                                                            <td>
+                                                                <select class="form-select form-select-sm"
+                                                                    aria-label="Default select example"
+                                                                    formControlName="qualificationDegreeId"
+                                                                    name="qualificationDegreeId">
+                                                                    <option selected>Select Qualifications</option>
+                                                                    <option
+                                                                        *ngFor="let data of acadQualMasterList; let index = i"
+                                                                        value="{{data?.qualificationDegreeId}}">
+                                                                        {{data?.acadQualName}}</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <mat-form-field appearance="fill">
+                                                                    <mat-label>Major Subject</mat-label>
+                                                                    <mat-select multiple
+                                                                        formControlName="qualificationDegreeMajorList"
+                                                                        name="qualificationDegreeMajorList">
+                                                                        <!-- <mat-select-trigger>
+                                                                            {{toppings.value ? toppings.value[0] : ''}}
+                                                                            <span *ngIf="toppings.value?.length > 1"
+                                                                                class="example-additional-selection">
+                                                                                (+{{toppings.value.length - 1}}
+                                                                                {{toppings.value?.length === 2 ? 'other'
+                                                                                :
+                                                                                'others'}})
+                                                                            </span>
+                                                                        </mat-select-trigger> -->
+                                                                        <mat-option *ngFor="let sub of subjectListQual"
+                                                                            value="{{sub?.teacher_qual_subject_id}}">
+                                                                            {{sub?.subject_name}}</mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+
+
+                                                            </td>
+                                                            <td>
+                                                                <mat-form-field appearance="fill">
+                                                                    <mat-label>Minor Subject</mat-label>
+                                                                    <mat-select multiple
+                                                                        formControlName="qualificationDegreeMinorList"
+                                                                        name="qualificationDegreeMinorList">
+                                                                        <!-- <mat-select-trigger>
+                                                                            {{toppings.value ? toppings.value[0] : ''}}
+                                                                            <span *ngIf="toppings.value?.length > 1"
+                                                                                class="example-additional-selection">
+                                                                                (+{{toppings.value.length - 1}}
+                                                                                {{toppings.value?.length === 2 ? 'other'
+                                                                                :
+                                                                                'others'}})
+                                                                            </span>
+                                                                        </mat-select-trigger> -->
+                                                                        <mat-option *ngFor="let sub of subjectListQual"
+                                                                            value="{{sub?.teacher_qual_subject_id}}">
+                                                                            {{sub?.subject_name}}</mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="boardUniversity"
+                                                                    name="boardUniversity">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="institution" name="institution">
+                                                            </td>
+                                                            <td><input type="date" class="form-control form-control-sm"
+                                                                    formControlName="yearOfPassing"
+                                                                    name="yearOfPassing">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="totalMarks" name="totalMarks">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="marksObtaioned"
+                                                                    name="marksObtaioned">
+                                                            </td>
+                                                            <td class="IconBx">
+                                                                <i class='bx bx-plus-circle bxStyle1 mr-2'
+                                                                    (click)="addAcadProfQual()"
+                                                                    style='color:#17443c'></i>
+                                                                <i class='bx bx-minus-circle bxStyle1 mr-2'
+                                                                    (click)="deleteRow(i)" style='color:#f9384b'></i>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2 class="titleSet">Are you a Teachers Eligibility Test (TET) / Central
+                                                    Teachers Eligibility Test (CTET) qualified
+                                                    teacher ?</h2>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" [value]="1" name="isVisibleTet"
+                                                        type="radio" [checked]="isSelectedTet">
+                                                    <label class="form-check-label font16 ff"
+                                                        for="inlineRadio1">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" [value]="0" name="isVisibleTet"
+                                                        type="radio" [checked]="!isSelectedTet">
+                                                    <label class="form-check-label font16 ff"
+                                                        for="inlineRadio2">No</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div>
+                                            <hr>
+                                            <div class="row" *ngIf="isVisibleTet">
+                                                <div class="col-md-12">
+                                                    <div>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <h2 class="titleSet">TET/ CTET</h2>
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <h2 class="titleSet">TET/CTET Passing Date</h2>
+                                                                <input type="date" class="form-control">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <h2 class="titleSet">TET/CTET Roll No.</h2>
+                                                                <input type="Number" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4 class="titleSet"> Professional Qualification</h4>
+                                                <table class="table" formArrayName="profQual">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Qualifications</th>
+                                                            <th> Subject</th>
+                                                            <th>Board / University</th>
+                                                            <th>School / College</th>
+                                                            <th>Years of Passing</th>
+                                                            <th>Total Marks</th>
+                                                            <th> Marks Obtained</th>
+                                                            <th>
+                                                                Action
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let quantity of profQual().controls; let i=index"
+                                                            formGroupName="{{i}}">
+                                                            <td>
+                                                                <select class="form-select form-select-sm"
+                                                                    aria-label="Default select example"
+                                                                    formControlName="qualificationDegreeId"
+                                                                    name="qualificationDegreeId">
+                                                                    <option selected>Select Qualifications</option>
+                                                                    <option
+                                                                        *ngFor="let data of profQualMasterList; let index = i"
+                                                                        value="{{data?.qualificationDegreeId}}">
+                                                                        {{data?.acadQualName}}</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <mat-form-field appearance="fill">
+                                                                    <mat-label>Subject</mat-label>
+                                                                    <mat-select multiple
+                                                                        formControlName="qualificationDegreeMajorList"
+                                                                        name="qualificationDegreeMajorList">
+                                                                        <!-- <mat-select-trigger>
+                                                                            {{toppings.value ? toppings.value[0] : ''}}
+                                                                            <span *ngIf="toppings.value?.length > 1"
+                                                                                class="example-additional-selection">
+                                                                                (+{{toppings.value.length - 1}}
+                                                                                {{toppings.value?.length === 2 ? 'other'
+                                                                                :
+                                                                                'others'}})
+                                                                            </span>
+                                                                        </mat-select-trigger> -->
+                                                                        <mat-option *ngFor="let sub of subjectListQual"
+                                                                            value="{{sub?.teacher_qual_subject_id}}">
+                                                                            {{sub?.subject_name}}</mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+
+                                                            </td>
+
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="boardUniversity"
+                                                                    name="boardUniversity">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="institution" name="institution">
+                                                            </td>
+                                                            <td><input type="date" class="form-control form-control-sm"
+                                                                    formControlName="yearOfPassing"
+                                                                    name="yearOfPassing">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="totalMarks" name="totalMarks">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="marksObtaioned"
+                                                                    name="marksObtaioned">
+                                                            </td>
+                                                            <td class="IconBx">
+                                                                <i class='bx bx-plus-circle bxStyle1 mr-2'
+                                                                    (click)="addProfQual()" style='color:#17443c'></i>
+                                                                <i class='bx bx-minus-circle bxStyle1 mr-2'
+                                                                    (click)="deleteRowPro(i)" style='color:#f9384b'></i>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <input type="button" name="next" class="next action-button" value="Next" />
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous" />
+                                <input type="submit" id="submit4" value="Save" class=" action-button" />
+
+                            </div>
+                            <div class="fieldSet">
+                                <fieldset>
+                                    <div class="form-card">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h2 class="mb-0">Training and Awards:</h2>
+                                            </div>
+                                            <div class="col-5">
+                                                <h2 class="steps">Step 5 - 7</h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4 class="titleSet">Awards Received</h4>
+                                                <table class="table" formArrayName="awardReceived">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Award Name</th>
+                                                            <th>Start Date</th>
+                                                            <th>Award By</th>
+                                                            <th>Remark</th>
+
+                                                            <th>
+                                                                Action
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let quantity of awardReceived().controls; let i=index"
+                                                            formGroupName="{{i}}">
+                                                            <td>
+                                                                <!-- <input type="text" class="form-control form-control-sm" formControlName="awardName" name="awardName"> -->
+
+                                                                <input type="text" list="codes"
+                                                                    formControlName="awardName" name="awardName"
+                                                                    (change)="saveCode($event)">
+                                                                <datalist id="codes">
+                                                                    <option *ngFor="let c of codeList"
+                                                                        [value]="c?.awardName">
+                                                                        {{c?.awardName}}</option>
+                                                                </datalist>
+                                                            </td>
+                                                            <td><input type="date" class="form-control form-control-sm"
+                                                                    formControlName="awardYear" name="awardYear">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="awardBy" name="awardBy">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="remarks" name="remarks">
+                                                            </td>
+
+                                                            <td class="IconBx">
+                                                                <i class='bx bx-plus-circle bxStyle1 mr-2'
+                                                                    (click)="addawardReceived()"
+                                                                    style='color:#17443c'></i>
+                                                                <i class='bx bx-minus-circle bxStyle1 mr-2'
+                                                                    (click)="deleteRowAward(i)"
+                                                                    style='color:#f9384b'></i>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4 class="titleSet">Training Received</h4>
+                                                <table class="table" formArrayName="trainingReceived">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Training Name</th>
+                                                            <th>Start Date</th>
+                                                            <th>Org. By</th>
+                                                            <th>Place</th>
+                                                            <th>
+                                                                Action
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let quantity of trainingReceived().controls; let i=index"
+                                                            formGroupName="{{i}}">
+                                                            <td>
+                                                                <input type="text" class="form-control form-control-sm"
+                                                                    formControlName="trainingName" name="trainingName">
+                                                            </td>
+                                                            <td><input type="date" class="form-control form-control-sm"
+                                                                    formControlName="trainingYear" name="trainingYear">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="trainingOrganizedBy"
+                                                                    name="trainingOrganizedBy">
+                                                            </td>
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    formControlName="place" name="place">
+                                                            </td>
+                                                            <td class="IconBx">
+                                                                <i class='bx bx-plus-circle bxStyle1 mr-2'
+                                                                    (click)="addtrainingReceived()"
+                                                                    style='color:#17443c'></i>
+                                                                <i class='bx bx-minus-circle bxStyle1 mr-2'
+                                                                    (click)="deleteRowTraining(i)"
+                                                                    style='color:#f9384b'></i>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <input type="button" name="next" class="next action-button" value="Next" />
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous" />
+                                <input type="submit" id="submit5" value="Save" class=" action-button" />
+                            </div>
+                            <div class="fieldSet">
+                                <fieldset>
+                                    <div class="form-card">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h2 class="mb-0">Work Experience:</h2>
+                                            </div>
+                                            <div class="col-5">
+                                                <h2 class="steps">Step 6 - 7</h2>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row">
+                                            <div class="col-md-9 mb-3" *ngIf="onvalid == '0'">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">Mode of recruitment</h4>
+                                                        <input type="text" placeholder="Direct Recruitment etc"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">Appointment / service order no</h4>
+                                                        <input type="text" placeholder="Order No" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h4 class="titleSet">Date of effect of service order no</h4>
+                                                        <input type="date" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-9 mb-3" *ngIf="onvalid == '1'">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="titleSet">Date of signing the agreement with employer
+                                                        </h4>
+                                                        <input type="date" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <h4 class="titleSet">Contract Valid from date / to date</h4>
+                                                        <input type="date" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4 class="titleSet mb-0">
+                                                    <span class="text-green">
+                                                        4
+                                                    </span>
+                                                    Details of Posting
+                                                </h4>
+
+                                                <table class="table mt-1" formArrayName="detailsOfPosting">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="20%">
+                                                                School Name
+                                                            </th>
+                                                            <th>
+                                                                Shift
+                                                            </th>
+                                                            <th>
+                                                                From</th>
+                                                            <th>
+                                                                To</th>
+                                                            <th>Nature of Appointment
+                                                            </th>
+                                                            <th>
+                                                                Position Held</th>
+
+                                                            <th>Appointed for Subject</th>
+                                                            <th>Transfer Ground</th>
+                                                            <th>
+                                                                <button class="btn btn-sm btn-green-logout me-2"
+                                                                    (click)="addQuantity(undefined)">
+                                                                    Add</button>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let quantity of detailsOfPosting().controls; let i=index"
+                                                            formGroupName="{{i}}">
+                                                            <td>
+                                                                <!-- <input type="text" class="form-control form-control-sm "
+                                                                    name="udiseSchoolName"
+                                                                    formControlName="udiseSchoolName">
+                                                                <i class="fa fa-search" (click)="selectSchool(i)"></i>
+                                                                 -->
+                                                                <div class="input-group mb-3">
+                                                                    <input type="text"
+                                                                        class="form-control form-control-sm"
+                                                                        name="udiseSchoolName"
+                                                                        formControlName="udiseSchoolName">
+                                                                    <button class="btn btn-sm btn-outline-secondary btn-sm"
+                                                                        type="button" id="button-addon2"> <i
+                                                                            class="fa fa-search"
+                                                                            (click)="selectSchool(i)"></i></button>
+                                                                </div>                                                                
+                                                                <span class="help-block text-danger"
+                                                                    *ngIf="quantity.controls.udiseSchoolName.errors?.required">
+                                                                    Enter School Name!</span>
+                                                            </td>
+                                                            <td>
+                                                                <select formControlName="shiftType" name="shiftType" id="shiftType"
+                                                        class="form-select form-select-sm">
+                                                        <option>Select</option>
+                                                        <option value="1">I</option>
+                                                        <option value="2">II</option>
+                                                        <option value="0">NA</option>
+                                                    </select>
+                                                            </td>
+                                                            <td><input type="date" class="form-control form-control-sm "
+                                                                    name="workStartDate"
+                                                                    formControlName="workStartDate">
+                                                                <span class="help-block text-danger"
+                                                                    *ngIf="quantity.controls.workStartDate.errors?.required">
+                                                                    Select Work Start Date!</span>
+                                                            </td>
+                                                            <td><input type="date" class="form-control form-control-sm "
+                                                                    name="workEndDate" formControlName="workEndDate">
+                                                                <span class="help-block text-danger"
+                                                                    *ngIf="quantity.controls.workEndDate.errors?.required">
+                                                                    Enter Work End Date!</span>
+                                                            </td>
+                                                            <td>
+                                                                <!-- <input type="text" class="form-control form-control-sm" name="natureOfApntmnt" formControlName="natureOfApntmnt"> -->
+                                                                <select class="form-select form-select-sm"
+                                                                    aria-label="Default select example"
+                                                                    name="natureOfAppointment"
+                                                                    formControlName="natureOfAppointment">
+                                                                    <option selected>Nature of Appointment</option>
+                                                                    <option value="1">Regular</option>
+                                                                    <option value="2">Contractual</option>
+                                                                    <option value="3">Part Time</option>
+                                                                </select>
+                                                                <span class="help-block text-danger"
+                                                                    *ngIf="quantity.controls.natureOfAppointment.errors?.required">
+                                                                    Select nature of Appointment!</span>
+                                                                <!-- <span class="help-block text-danger" *ngIf="!teacherForm.get('i.natureOfAppontment').valid ">
+                                                                    Select nature of appointment!</span> -->
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select form-select-sm"
+                                                                    aria-label="Default select example"
+                                                                    name="positionType" formControlName="positionType"
+                                                                    value="positionHeld">
+                                                                    <option selected> Position Held</option>
+                                                                    <option
+                                                                        *ngFor="let data of teacherTypeDataNameCode; let i=index;"
+                                                                        value="{{data.teacherTypeId}}">{{data.nameCode}}
+                                                                    </option>
+                                                                </select>
+                                                                <span class="help-block text-danger"
+                                                                    *ngIf="quantity.controls.positionType.errors?.required">
+                                                                    Select position type!</span>
+                                                            </td>
+                                                            <td>
+
+                                                                <select class="form-select form-select-sm"
+                                                                    aria-label="Default select example"
+                                                                    name="appointedForSubject"
+                                                                    formControlName="appointedForSubject">
+                                                                    <option>Appointed for Subject</option>
+                                                                    <option
+                                                                        *ngFor="let data of subjectListNameCode; let i=index;"
+                                                                        value="{{data.subjectCode}}">
+                                                                        {{data.subNameCode}}
+                                                                    </option>
+                                                                </select>
+                                                                <span class="help-block text-danger"
+                                                                    *ngIf="quantity.controls.appointedForSubject.errors?.required">
+                                                                    Select appointed for subject!</span>
+
+                                                            </td>
+                                                            <td>
+                                                                <select name="groundForTransfer" id="groundForTransfer"
+                                                                formControlName="groundForTransfer" class="form-select form-select-sm">
+                                                                <option>Select</option>
+                                                                <option value="1">Request On LTR/MDG/DFP/PH</option>
+                                                                <option value="2">Request On Spouse Ground</option>
+                                                                <option value="3">Surplus</option>
+                                                                <option value="4">Displacement</option>
+                                                                <option value="5">ADMN Ground Under PARA7(E)</option>
+                                                                <option value="6">ADMN Ground Under 40 Years Of Age</option>
+                                                                <option value="7">Direct Recruitment</option>
+                                                                <option value="8">Promotion</option>
+                                                                <option value="9">Any Other Grounds</option>
+                                                            </select>
+                                                            </td>
+                                                            <td class="IconBx">
+                                                                <i (click)="removeQuantity(i)"
+                                                                    class="bx bx-minus-circle bxStyle1 mr-2"
+                                                                    style="color: #f9384b;"></i>
+                                                            </td>
+                                                            <!-- <td>                                                                
+                                                                <button class="btn btn-sm btn-red-logout"
+                                                                    (click)="removeQuantity(i)">
+                                                                    Delete</button>
+                                                            </td> -->
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <!-- <table class="table mt-1" formArrayName="detailsOfPosting">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                School UDISE+ / Name
+                                                            </th>
+
+                                                            <th>
+                                                                From Start Date</th>
+                                                            <th>
+                                                                To End Date</th>
+                                                            <th>Nature of Appointment
+                                                            </th>
+                                                            <th>
+                                                                Position Held</th>
+
+                                                            <th>Appointed for Subject</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let quantity of detailsOfPosting().controls; let i=index"
+                                                            formGroupName="{{i}}">
+                                                            <td><input type="text" class="form-control form-control-sm"
+                                                                    name="udiseSchoolName"
+                                                                    formControlName="udiseSchoolName">
+                                                            </td>
+                                                            <td><input type="date" class="form-control form-control-sm "
+                                                                    name="workStartDate"
+                                                                    formControlName="workStartDate">
+                                                            </td>
+                                                            <td><input type="date" class="form-control form-control-sm "
+                                                                    name="workEndDate" formControlName="workEndDate">
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select form-select-sm"
+                                                                    aria-label="Default select example"
+                                                                    name="natureOfAppontment"
+                                                                    formControlName="natureOfAppontment">
+                                                                    <option selected>Nature of Appointment</option>
+                                                                    <option value="1">Regular</option>
+                                                                    <option value="2">Contractual</option>
+                                                                    <option value="3">Part Time</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select class="form-select form-select-sm"
+                                                                    aria-label="Default select example"
+                                                                    name="positionType" formControlName="positionType"
+                                                                    value="positionHeld">
+                                                                    <option selected> Position Held</option>
+                                                                    <option
+                                                                        *ngFor="let data of teacherTypeDataNameCode; let i=index;"
+                                                                        value="{{data.teacherTypeId}}">{{data.nameCode}}
+                                                                    </option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+
+                                                                <select class="form-select form-select-sm"
+                                                                    aria-label="Default select example"
+                                                                    name="appointedForSubject"
+                                                                    formControlName="appointedForSubject">
+                                                                    <option>Appointed for Subject</option>
+                                                                    <option
+                                                                        *ngFor="let data of subjectListNameCode; let i=index;"
+                                                                        value="{{data.subjectCode}}">
+                                                                        {{data.subNameCode}}
+                                                                    </option>
+                                                                </select>
+
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-sm btn-green-logout me-2"
+                                                                    (click)="addQuantity(undefined)">
+                                                                    Add</button>
+                                                                <button class="btn btn-sm btn-red-logout"
+                                                                    (click)="removeQuantity()">
+                                                                    Delete</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table> -->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h4 class="titleSet mb-0">
+                                                            <span class="text-green">
+                                                                3
+                                                            </span>
+                                                            Current Subject and Class taught details for academic year
+                                                            2019-20
+                                                        </h4>
+                                                        <table class="table mt-1" formArrayName="subAndClassTaught">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Class</th>
+                                                                    <th>
+                                                                        Subject</th>
+                                                                    <th>
+                                                                        Medium Instruction</th>
+                                                                    <th>
+                                                                        Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <select class="form-select form-select-sm"
+                                                                            aria-label="Default select example">
+                                                                            <option selected>Nationality</option>
+                                                                            <option value="1">One</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td>
+                                                                        <select class="form-select form-select-sm"
+                                                                            aria-label="Default select example">
+                                                                            <option selected>Subject</option>
+                                                                            <option value="1">One</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td>
+                                                                        <select class="form-select form-select-sm"
+                                                                            aria-label="Default select example">
+                                                                            <option selected>Subject</option>
+                                                                            <option value="1">One</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button
+                                                                            class="btn btn-sm btn-green-logout me-2">
+                                                                            Add</button>
+                                                                        <button class="btn btn-sm btn-red-logout">
+                                                                            Delete</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h4 class="titleSet mb-0">Promotion Details</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+
+                                                        <table class="table mt-1" formArrayName="promotionDetails">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th> Date of Promotion </th>
+                                                                    <th> New Post </th>
+                                                                    <th> Action </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let promotion of promotionDetails().controls; let i=index"
+                                                                    formGroupName="{{i}}">
+                                                                    <td><input type="date" name="workStartDate"
+                                                                            class="form-control form-control-sm "
+                                                                            formControlName="workStartDate">
+                                                                    </td>
+                                                                    <td>
+                                                                        <select class="form-select form-select-sm"
+                                                                            aria-label="Default select example"
+                                                                            name="positionType"
+                                                                            formControlName="positionType"
+                                                                            value="positionHeld">
+                                                                            <option selected> Position Held</option>
+                                                                            <option
+                                                                                *ngFor="let data of teacherTypeDataNameCode; let i=index;"
+                                                                                value="{{data.teacherTypeId}}">
+                                                                                {{data.nameCode}}
+                                                                            </option>
+                                                                        </select>
+                                                                        <!-- <input type="text" name="positionType" class="form-control form-control-sm" formControlName="positionType"> -->
+                                                                        <!-- <option selected> Position Held</option>
+                                                                        <option
+                                                                            *ngFor="let data of teacherTypeDataNameCode; let i=index;"
+                                                                            value="{{data.teacherTypeId}}">{{data.nameCode}}
+                                                                        </option> -->
+                                                                    </td>
+                                                                    <td>
+                                                                        <button class="btn btn-sm btn-green-logout me-2"
+                                                                            (click)="addQuantityPromotion()">
+                                                                            Add</button>
+                                                                        <button class="btn btn-sm btn-red-logout"
+                                                                            (click)="removeQuantityPromotion()">
+                                                                            Delete</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <input type="button" name="next" class="next action-button" value="Next" />
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous" />
+                                <input type="submit" id="submit6" value="Save" class=" action-button" />
+
+                            </div>
+                            <div class="fieldSet">
+                                <fieldset>
+                                    <div class="form-card">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h2 class="mb-0"> Upload Document: </h2>
+                                            </div>
+                                            <div class="col-5">
+                                                <h2 class="steps">Step 7 - 7</h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <h4 class="titleSet">Photo Upload</h4>
+                                                        <input class="form-control" type="file" id="formFile">
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <h4 class="titleSet">Signature Upload</h4>
+                                                        <input class="form-control" type="file" id="formFile">
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <h4 class="titleSet">Aadhar Upload</h4>
+                                                        <input class="form-control" type="file" id="formFile">
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <h4 class="titleSet">Pan Card Upload</h4>
+                                                        <input class="form-control" type="file" id="formFile">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="shadow box" style="height:150px; width:100%;">
+                                                    <div class="flex-item"> Document Upload </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <input type="button" name="next" class="next action-button" value="Next" />
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous" />
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-content>
+    <ng-template #verifyProfile let-modal style="min-width: 100%;">
+
+        <div class="modal-header">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="clearfix">
+                        <div class="float-left">
+                            <h2 class="mb-0 text-green">Detailed Data of Selected Teacher</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="" style="min-width: 100%; max-height: 1000px;">
+            <div class="container-fluid">
+                <form [formGroup]="correctionProfile" (ngSubmit)="onCorrectionFormSubmit()">
+                    <div class="row">
+
+                        <div class="col-md-12 mt-2">
+                            <h3 style="color: blue;">
+                                <span style="color: brown; font-weight: bold;">*Note :</span>
+                                Below list shows that the data available is correct and you are verifying the same.
+                                If data is incorrect kindly check (No) and enter the correct data inside the box
+                                provided.
+                            </h3>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="shadow m-3 p-3">
+                                <ul class="ulLeft">
+                                    <li style="width:150px;">
+                                        <h4 class="titleSet"> Employee Code :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm"
+                                            formControlName="teacherEmployeeCode" name="teacherEmployeeCode"
+                                            placeholder="Employee Code">
+                                    </li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh
+                                                (click)="correctionForm('sh','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh
+                                                (click)="correctionForm('sh','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh == false">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Employee Code" formControlName="teacherEmployeeCodeNew"
+                                                name="teacherEmployeeCodeNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct employee code
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <ul class="ulLeft">
+                                    <li style="width:150px;">
+                                        <h4 class="titleSet"> Full Name : </h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm" placeholder="Full Name"
+                                            formControlName="teacherName" name="teacherName"></li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh1
+                                                (click)="correctionForm('sh1','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh1
+                                                (click)="correctionForm('sh1','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh1 == false">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Full Name" formControlName="teacherNameNew"
+                                                name="teacherNameNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct full name</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <ul class="ulLeft">
+                                    <li style="width:150px;">
+                                        <h4 class="titleSet"> Gender :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm" placeholder="Gender"
+                                            formControlName="teacherGender" name="teacherGender"></li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh2
+                                                (click)="correctionForm('sh2','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh2
+                                                (click)="correctionForm('sh2','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li *ngIf="sh2 == false">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="1"
+                                                formControlName="teacherGenderNew" name="teacherGenderNew" /> Male
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="2"
+                                                formControlName="teacherGenderNew" name="teacherGenderNew" /> Female
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" value="3"
+                                                formControlName="teacherGenderNew" name="teacherGenderNew" /> Others
+                                        </div>
+                                        <div style="color: #f9384b; text-align: left;">Enter correct gender</div>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <ul class="ulLeft">
+                                    <li style="width:150px;">
+                                        <h4 class="titleSet"> Date of birth : </h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm"
+                                            placeholder="Date of birth" formControlName="teacherDob" name="teacherDob">
+                                    </li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh3
+                                                (click)="correctionForm('sh3','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh3
+                                                (click)="correctionForm('sh3','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh3 == false">
+                                            <input type="date" class="form-control form-control-sm"
+                                                placeholder="Date of birth" formControlName="teacherDobNew"
+                                                name="teacherDobNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct DoB</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+
+                                <ul class="ulLeft">
+                                    <li style="width:150px;">
+                                        <h4 class="titleSet">Social Category :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm"
+                                            placeholder="Social Category" formControlName="teacherSocialCategory"
+                                            name="teacherSocialCategory"></li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh4
+                                                (click)="correctionForm('sh4','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh4
+                                                (click)="correctionForm('sh4','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh4 == false">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Social Category" formControlName="teacherSocialCategoryNew"
+                                                name="teacherSocialCategoryNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct social category
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <ul class="ulLeft">
+                                    <li style="width:150px;">
+                                        <h4 class="titleSet">Religion :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm" placeholder="Religion"
+                                            formControlName="teacherReligion" name="teacherReligion"></li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh5
+                                                (click)="correctionForm('sh5','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh5
+                                                (click)="correctionForm('sh5','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh5 == false">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Religion" formControlName="teacherReligionNew"
+                                                name="teacherReligionNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct religion</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+
+                                <ul class="ulLeft">
+                                    <li style="width:150px;">
+                                        <h4 class="titleSet">Nationality :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm"
+                                            placeholder="Nationality" formControlName="teacherNationality"
+                                            name="teacherNationality">
+                                    </li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh6
+                                                (click)="correctionForm('sh6','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh6
+                                                (click)="correctionForm('sh6','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh6 == false">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Nationality" formControlName="teacherNationalityNew"
+                                                name="teacherNationalityNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct nationality
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+
+                                <ul class="ulLeft">
+                                    <li style="width:150px;">
+                                        <h4 class="titleSet">Mobile :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm" placeholder="Mobile"
+                                            formControlName="teacherMobile" name="teacherMobile"></li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh7
+                                                (click)="correctionForm('sh7','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh7
+                                                (click)="correctionForm('sh7','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh7 == false">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Mobile"
+                                                formControlName="teacherMobileNew" name="teacherMobileNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct mobile number
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+
+                                <ul class="ulLeft">
+                                    <li style="width:150px;">
+                                        <h4 class="titleSet">Email :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm" placeholder="Email"
+                                            formControlName="teacherEmail" name="teacherEmail"></li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh8
+                                                (click)="correctionForm('sh8','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh8
+                                                (click)="correctionForm('sh8','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh8 == false">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Email"
+                                                formControlName="teacherEmailNew" name="teacherEmailNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct email id</div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="shadow m-3 p-3">
+                                <ul class="ulLeft">
+                                    <!-- <li style="width:30%;">
+                                        <h4 class="titleSet"> Present Station Name(Code) :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm"
+                                            placeholder="Present Station Name(Code) " 
+                                             formControlName="stationNameCode" name="stationNameCode"></li>
+                                             <li>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" value="1"  (click)="correctionForm('sh21','1')" type="radio" /> Yes
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" value="0"  (click)="correctionForm('sh821','0')" type="radio" /> No
+                                                </div>
+                                            </li> -->
+                                    <!-- <li>
+                                        <div class="text-center purple" *ngIf="sh21 == 0">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Present Station Name(Code)" >
+                                            <div style="color: #f9384b; text-align: left;">Enter correct present station
+                                                name</div>
+                                        </div>
+                                    </li> -->
+                                </ul>
+                                <hr />
+                                <ul class="ulLeft">
+                                    <li style="width:30%;">
+                                        <h4 class="titleSet"> Present Station in Present Post Date :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm"
+                                            placeholder="Present Station in Present Post Date "
+                                            formControlName="workExperiencePositionTypePresentStationStartDate"
+                                            name="workExperiencePositionTypePresentStationStartDate">
+                                    </li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh22
+                                                (click)="correctionForm('sh22','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh22
+                                                (click)="correctionForm('sh22','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh22 == false">
+                                            <input type="date" class="form-control form-control-sm"
+                                                placeholder="Present Station in Present Post Date "
+                                                formControlName="workExperiencePositionTypePresentStationStartDateNew"
+                                                name="workExperiencePositionTypePresentStationStartDateNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct present station
+                                                in
+                                                present post date</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <ul class="ulLeft">
+                                    <!-- <li style="width:30%;">
+                                        <h4 class="titleSet">Present KV Name(Code) :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm"
+                                            placeholder="Present KV Name(Code) " 
+                                            formControlName="kvNameCode" name="kvNameCode"></li>
+                                            <li>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" value="1"  (click)="correctionForm('sh23','1')" type="radio" /> Yes
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" value="0"  (click)="correctionForm('sh23','0')" type="radio" /> No
+                                                </div>
+                                            </li> -->
+                                    <!-- <li>
+                                        <div class="text-center purple" *ngIf="sh23 == 0">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="KV Name">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct KV name</div>
+                                        </div>
+                                    </li> -->
+                                </ul>
+                                <hr />
+                                <ul class="ulLeft">
+                                    <li style="width:30%;">
+                                        <h4 class="titleSet"> Present KV in Present Post Date :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm"
+                                            placeholder="Present KV in Present Post Date "
+                                            formControlName="workExperienceWorkStartDatePresentKv"
+                                            name="workExperienceWorkStartDatePresentKv"></li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh24
+                                                (click)="correctionForm('sh24','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh24
+                                                (click)="correctionForm('sh24','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh24 == false">
+                                            <input type="date" class="form-control form-control-sm"
+                                                placeholder="Present KV in Present Post Date "
+                                                formControlName="workExperienceWorkStartDatePresentKvNew"
+                                                name="workExperienceWorkStartDatePresentKvNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct present KV in
+                                                present post date</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+
+                                <ul class="ulLeft">
+                                    <li style="width:30%;">
+                                        <h4 class="titleSet"> Present Post Name(Code) :</h4>
+                                    </li>
+                                    <li>
+                                    <select class="form-select form-control-sm" aria-label="Default select example"
+                                        name="lastPromotionPositionType" formControlName="lastPromotionPositionType">
+                                        <option selected>Select Post</option>
+                                        <option *ngFor="let data of teacherTypeDataNameCode; let i=index;"
+                                            value="{{data.teacherTypeId}}">{{data.nameCode}}
+                                        </option>
+                                    </select>
+                                </li>
+                                    <!-- <li><input type="text" class="form-control form-control-sm"
+                                            placeholder="Present Post Name(Code)"
+                                            formControlName="lastPromotionPositionType"
+                                            name="lastPromotionPositionType"></li> -->
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh25
+                                                (click)="correctionForm('sh25','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh25
+                                                (click)="correctionForm('sh25','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh25 == false">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Present Post Name(Code)"
+                                                formControlName="lastPromotionPositionTypeNew"
+                                                name="lastPromotionPositionTypeNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct present post
+                                                name
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <ul class="ulLeft">
+                                    <li style="width:30%;">
+                                        <h4 class="titleSet"> Present Post Date :</h4>
+                                    </li>
+                                    <li><input type="text" class="form-control form-control-sm"
+                                            placeholder="Present Post Date" formControlName="lastPromotionPositionDate"
+                                            name="lastPromotionPositionDate"></li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh26
+                                                (click)="correctionForm('sh26','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh26
+                                                (click)="correctionForm('sh26','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh26 == false">
+                                            <input type="date" class="form-control form-control-sm"
+                                                placeholder="Present Post Date"
+                                                formControlName="lastPromotionPositionDateNew"
+                                                name="lastPromotionPositionDateNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct present post
+                                                date
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+
+                                <ul class="ulLeft">
+                                    <li style="width:30%;">
+                                        <h4 class="titleSet"> Subject Name(Code) :</h4>
+                                    </li>
+                                    <li>
+                                        <select class="form-select" aria-label="Default select example"
+                                                            name="workExperienceAppointedForSubject"
+                                                            formControlName="workExperienceAppointedForSubject">
+                                                            <option selected>Select Subject</option>
+                                                            <option
+                                                                *ngFor="let data of subjectListNameCode; let i=index;"
+                                                                value="{{data.subjectCode}}">{{data.subNameCode}}
+                                                            </option>
+
+                                                        </select>
+                                        <!-- <input type="text" class="form-control form-control-sm"
+                                            placeholder="Nationality"
+                                            formControlName="workExperienceAppointedForSubject"
+                                            name="workExperienceAppointedForSubject"> -->
+                                    </li>
+                                    <li>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=sh27
+                                                (click)="correctionForm('sh27','1')" type="radio" /> Yes
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" [checked]=!sh27
+                                                (click)="correctionForm('sh27','0')" type="radio" /> No
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="text-center purple" *ngIf="sh27 == false">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Enter Subject Name"
+                                                formControlName="workExperienceAppointedForSubjectNew"
+                                                name="workExperienceAppointedForSubjectNew">
+                                            <div style="color: #f9384b; text-align: left;">Enter correct subject name
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <hr />
+
+                                <div class="col-md-12">
+                                    <textarea class="form-control" rows="3" name="remarks" placeholder="Remaks (If any)"
+                                        formControlName="remarks"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="p-3" style="text-align: right;">
+                                <button type="button" class="btn btn-danger btn-sm" style="margin-left: 3px;"
+                                    (click)="modal.dismiss('Cross click')">Cancel</button>
+                                <button type="submit" class="btn btn-warning btn-sm" style="margin-left: 3px;"
+                                    (click)="modal.dismiss('Cross click')"> Send for Correction</button>
+                                <button type="submit" class="btn btn-success btn-sm" style="margin-left: 3px;"
+                                    (click)="modal.dismiss('Cross click')"> Confirm & Verify</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </ng-template>
+</div>
